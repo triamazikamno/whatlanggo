@@ -45,6 +45,7 @@ and [documentation](https://godoc.org/github.com/abadojack/whatlanggo).
 | Marathi        | mar       | Mar |
 | Kannada        | kan       | Kan |
 | Romanian       | ron       | Ron |
+| Slovak         | slk       | Slk |
 | Slovene        | slv       | Slv |
 | Croatian       | hrv       | Hrv |
 | Serbian        | srp       | Srp |
