@@ -1,11 +1,12 @@
 package whatlanggo
 
-//Lang represents a language following ISO 639-3 standard.
+// Lang represents a language following ISO 639-3 standard.
 type Lang int
 
-//Aka ...
+// Aka ...
 const (
-	Aka Lang = iota
+	Afr Lang = iota
+	Aka
 	Amh
 	Arb
 	Azj
@@ -91,536 +92,324 @@ const (
 	Zul
 )
 
-//CodeToLang gets enum by ISO 639-3 code as a string.
+// CodeToLang gets enum by ISO 639-3 code as a string.
 func CodeToLang(code string) Lang {
-	switch code {
-	case "aka":
-		return Aka
-	case "amh":
-		return Amh
-	case "arb":
-		return Arb
-	case "azj":
-		return Azj
-	case "bel":
-		return Bel
-	case "ben":
-		return Ben
-	case "bho":
-		return Bho
-	case "bul":
-		return Bul
-	case "ceb":
-		return Ceb
-	case "ces":
-		return Ces
-	case "cmn":
-		return Cmn
-	case "dan":
-		return Dan
-	case "deu":
-		return Deu
-	case "ell":
-		return Ell
-	case "eng":
-		return Eng
-	case "epo":
-		return Epo
-	case "est":
-		return Est
-	case "fin":
-		return Fin
-	case "fra":
-		return Fra
-	case "guj":
-		return Guj
-	case "hat":
-		return Hat
-	case "hau":
-		return Hau
-	case "heb":
-		return Heb
-	case "hin":
-		return Hin
-	case "hrv":
-		return Hrv
-	case "hun":
-		return Hun
-	case "ibo":
-		return Ibo
-	case "ilo":
-		return Ilo
-	case "ind":
-		return Ind
-	case "ita":
-		return Ita
-	case "jav":
-		return Jav
-	case "jpn":
-		return Jpn
-	case "kan":
-		return Kan
-	case "kat":
-		return Kat
-	case "khm":
-		return Khm
-	case "kin":
-		return Kin
-	case "kor":
-		return Kor
-	case "kur":
-		return Kur
-	case "lav":
-		return Lav
-	case "lit":
-		return Lit
-	case "mai":
-		return Mai
-	case "mal":
-		return Mal
-	case "mar":
-		return Mar
-	case "mkd":
-		return Mkd
-	case "mlg":
-		return Mlg
-	case "mya":
-		return Mya
-	case "nep":
-		return Nep
-	case "nld":
-		return Nld
-	case "nno":
-		return Nno
-	case "nob":
-		return Nob
-	case "nya":
-		return Nya
-	case "ori":
-		return Ori
-	case "orm":
-		return Orm
-	case "pan":
-		return Pan
-	case "pes":
-		return Pes
-	case "pol":
-		return Pol
-	case "por":
-		return Por
-	case "ron":
-		return Ron
-	case "run":
-		return Run
-	case "rus":
-		return Rus
-	case "sin":
-		return Sin
-	case "skr":
-		return Skr
-	case "slk":
-		return Slk
-	case "slv":
-		return Slv
-	case "sna":
-		return Sna
-	case "som":
-		return Som
-	case "spa":
-		return Spa
-	case "srp":
-		return Srp
-	case "swe":
-		return Swe
-	case "tam":
-		return Tam
-	case "tel":
-		return Tel
-	case "tgl":
-		return Tgl
-	case "tha":
-		return Tha
-	case "tir":
-		return Tir
-	case "tuk":
-		return Tuk
-	case "tur":
-		return Tur
-	case "uig":
-		return Uig
-	case "ukr":
-		return Ukr
-	case "urd":
-		return Urd
-	case "uzb":
-		return Uzb
-	case "vie":
-		return Vie
-	case "ydd":
-		return Ydd
-	case "yor":
-		return Yor
-	case "zul":
-		return Zul
-	default:
-		return -1
+	lang := map[string]Lang{
+		"afr": Afr,
+		"aka": Aka,
+		"amh": Amh,
+		"arb": Arb,
+		"azj": Azj,
+		"bel": Bel,
+		"ben": Ben,
+		"bho": Bho,
+		"bul": Bul,
+		"ceb": Ceb,
+		"ces": Ces,
+		"cmn": Cmn,
+		"dan": Dan,
+		"deu": Deu,
+		"ell": Ell,
+		"eng": Eng,
+		"epo": Epo,
+		"est": Est,
+		"fin": Fin,
+		"fra": Fra,
+		"guj": Guj,
+		"hat": Hat,
+		"hau": Hau,
+		"heb": Heb,
+		"hin": Hin,
+		"hrv": Hrv,
+		"hun": Hun,
+		"ibo": Ibo,
+		"ilo": Ilo,
+		"ind": Ind,
+		"ita": Ita,
+		"jav": Jav,
+		"jpn": Jpn,
+		"kan": Kan,
+		"kat": Kat,
+		"khm": Khm,
+		"kin": Kin,
+		"kor": Kor,
+		"kur": Kur,
+		"lav": Lav,
+		"lit": Lit,
+		"mai": Mai,
+		"mal": Mal,
+		"mar": Mar,
+		"mkd": Mkd,
+		"mlg": Mlg,
+		"mya": Mya,
+		"nep": Nep,
+		"nld": Nld,
+		"nno": Nno,
+		"nob": Nob,
+		"nya": Nya,
+		"ori": Ori,
+		"orm": Orm,
+		"pan": Pan,
+		"pes": Pes,
+		"pol": Pol,
+		"por": Por,
+		"ron": Ron,
+		"run": Run,
+		"rus": Rus,
+		"sin": Sin,
+		"skr": Skr,
+		"slk": Slk,
+		"slv": Slv,
+		"sna": Sna,
+		"som": Som,
+		"spa": Spa,
+		"srp": Srp,
+		"swe": Swe,
+		"tam": Tam,
+		"tel": Tel,
+		"tgl": Tgl,
+		"tha": Tha,
+		"tir": Tir,
+		"tuk": Tuk,
+		"tur": Tur,
+		"uig": Uig,
+		"ukr": Ukr,
+		"urd": Urd,
+		"uzb": Uzb,
+		"vie": Vie,
+		"ydd": Ydd,
+		"yor": Yor,
+		"zul": Zul,
 	}
+
+	if val, ok := lang[code]; ok {
+		return val
+	}
+
+	return -1
 }
 
-//LangToStringShort converts enum into ISO 639-1 code as a string.
-//
+// Iso6391 returns ISO 639-1 code of Lang as a string.
+func (lang Lang) Iso6391() string {
+	return LangToStringShort(lang)
+}
+
+// LangToStringShort converts enum into ISO 639-1 code as a string.
 // Return empty string when there is no ISO 639-1 code.
+// Deprecated: LangToStringShort is deprected and exists for historical
+// compatibility. Please use `Lang.Iso6391()` instead.
 func LangToStringShort(lang Lang) string {
-	switch lang {
-	case Aka:
-		return "ak"
-	case Amh:
-		return "am"
-	case Arb:
-		return "ar"
-	case Azj:
-		return "az" // Azerbaijani iso 639-3 is aze, iso 639-1 az
-	case Bel:
-		return "be"
-	case Ben:
-		return "bn"
-	case Bho:
-		return "bh"
-	case Bul:
-		return "bg"
-	case Ceb:
-		return "" // No iso 639-1 code
-	case Ces:
-		return "cs"
-	case Cmn:
-		return "zh" // No iso 639-1, but http://www.loc.gov/standards/iso639-2/faq.html#24
-	case Dan:
-		return "da"
-	case Deu:
-		return "de"
-	case Ell:
-		return "el"
-	case Eng:
-		return "en"
-	case Epo:
-		return "eo"
-	case Est:
-		return "et"
-	case Fin:
-		return "fi"
-	case Fra:
-		return "fr"
-	case Guj:
-		return "gu"
-	case Hat:
-		return "ht"
-	case Hau:
-		return "ha"
-	case Heb:
-		return "he"
-	case Hin:
-		return "hi"
-	case Hrv:
-		return "hr"
-	case Hun:
-		return "hu"
-	case Ibo:
-		return "ig"
-	case Ilo:
-		return "" // No iso639-1
-	case Ind:
-		return "id"
-	case Ita:
-		return "it"
-	case Jav:
-		return "jv"
-	case Jpn:
-		return "ja"
-	case Kan:
-		return "kn"
-	case Kat:
-		return "ka"
-	case Khm:
-		return "km"
-	case Kin:
-		return "rw"
-	case Kor:
-		return "ko"
-	case Kur:
-		return "ku"
-	case Lav:
-		return "lv"
-	case Lit:
-		return "lt"
-	case Mai:
-		return "" // No iso639-1
-	case Mal:
-		return "ml"
-	case Mar:
-		return "mr"
-	case Mkd:
-		return "mk"
-	case Mlg:
-		return "mg"
-	case Mya:
-		return "my"
-	case Nep:
-		return "ne"
-	case Nld:
-		return "nl"
-	case Nno:
-		return "nn"
-	case Nob:
-		return "nb"
-	case Nya:
-		return "ny"
-	case Ori:
-		return "or"
-	case Orm:
-		return "om"
-	case Pan:
-		return "pa"
-	case Pes:
-		return "" // No iso639-1
-	case Pol:
-		return "pl"
-	case Por:
-		return "pt"
-	case Ron:
-		return "ro"
-	case Run:
-		return "rn"
-	case Rus:
-		return "ru"
-	case Sin:
-		return "si"
-	case Skr:
-		return "" // No iso639-1
-	case Slv:
-		return "sl"
-	case Sna:
-		return "sn"
-	case Som:
-		return "so"
-	case Spa:
-		return "es"
-	case Srp:
-		return "sr"
-	case Swe:
-		return "sv"
-	case Tam:
-		return "ta"
-	case Tel:
-		return "te"
-	case Tgl:
-		return "tl"
-	case Tha:
-		return "th"
-	case Tir:
-		return "ti"
-	case Tuk:
-		return "tk"
-	case Tur:
-		return "tr"
-	case Uig:
-		return "ug"
-	case Ukr:
-		return "uk"
-	case Urd:
-		return "ur"
-	case Uzb:
-		return "uz"
-	case Vie:
-		return "vi"
-	case Ydd:
-		return "" // No iso639-1
-	case Yor:
-		return "yo"
-	case Zul:
-		return "zu"
-	default:
-		return ""
+	langMap := map[Lang]string{
+		Afr: "af",
+		Aka: "ak",
+		Amh: "am",
+		Arb: "ar",
+		Azj: "az", // Azerbaijani iso 639-3 is aze, iso 639-1 az
+		Bel: "be",
+		Ben: "bn",
+		Bho: "bh",
+		Bul: "bg",
+		Ceb: "", // No iso 639-1 code
+		Ces: "cs",
+		Cmn: "zh", // No iso 639-1, but http://www.loc.gov/standards/iso639-2/faq.html#24
+		Dan: "da",
+		Deu: "de",
+		Ell: "el",
+		Eng: "en",
+		Epo: "eo",
+		Est: "et",
+		Fin: "fi",
+		Fra: "fr",
+		Guj: "gu",
+		Hat: "ht",
+		Hau: "ha",
+		Heb: "he",
+		Hin: "hi",
+		Hrv: "hr",
+		Hun: "hu",
+		Ibo: "ig",
+		Ilo: "", // No iso639-1
+		Ind: "id",
+		Ita: "it",
+		Jav: "jv",
+		Jpn: "ja",
+		Kan: "kn",
+		Kat: "ka",
+		Khm: "km",
+		Kin: "rw",
+		Kor: "ko",
+		Kur: "ku",
+		Lav: "lv",
+		Lit: "lt",
+		Mai: "", // No iso639-1
+		Mal: "ml",
+		Mar: "mr",
+		Mkd: "mk",
+		Mlg: "mg",
+		Mya: "my",
+		Nep: "ne",
+		Nld: "nl",
+		Nno: "nn",
+		Nob: "nb",
+		Nya: "ny",
+		Ori: "or",
+		Orm: "om",
+		Pan: "pa",
+		Pes: "", // No iso639-1
+		Pol: "pl",
+		Por: "pt",
+		Ron: "ro",
+		Run: "rn",
+		Rus: "ru",
+		Sin: "si",
+		Skr: "", // No iso639-1
+		Slk: "si",
+		Slv: "sl",
+		Sna: "sn",
+		Som: "so",
+		Spa: "es",
+		Srp: "sr",
+		Swe: "sv",
+		Tam: "ta",
+		Tel: "te",
+		Tgl: "tl",
+		Tha: "th",
+		Tir: "ti",
+		Tuk: "tk",
+		Tur: "tr",
+		Uig: "ug",
+		Ukr: "uk",
+		Urd: "ur",
+		Uzb: "uz",
+		Vie: "vi",
+		Ydd: "", // No iso639-1
+		Yor: "yo",
+		Zul: "zu",
 	}
+
+	if val, ok := langMap[lang]; ok {
+		return val
+	}
+
+	return ""
 }
 
-//LangToString converts enum into ISO 639-3 code as a string.
+// Iso6393 returns ISO 639-3 code of Lang as a string.
+func (lang Lang) Iso6393() string {
+	return LangToString(lang)
+}
+
+// LangToString converts enum into ISO 639-3 code as a string.
+// Deprecated: LangToString is deprected and exists for historical
+// compatibility. Please use `Lang.Iso6393()` instead.
 func LangToString(lang Lang) string {
-	switch lang {
-	case Aka:
-		return "aka"
-	case Amh:
-		return "amh"
-	case Arb:
-		return "arb"
-	case Azj:
-		return "azj"
-	case Bel:
-		return "bel"
-	case Ben:
-		return "ben"
-	case Bho:
-		return "bho"
-	case Bul:
-		return "bul"
-	case Ceb:
-		return "ceb"
-	case Ces:
-		return "ces"
-	case Cmn:
-		return "cmn"
-	case Dan:
-		return "dan"
-	case Deu:
-		return "deu"
-	case Ell:
-		return "ell"
-	case Eng:
-		return "eng"
-	case Epo:
-		return "epo"
-	case Est:
-		return "est"
-	case Fin:
-		return "fin"
-	case Fra:
-		return "fra"
-	case Guj:
-		return "guj"
-	case Hat:
-		return "hat"
-	case Hau:
-		return "hau"
-	case Heb:
-		return "heb"
-	case Hin:
-		return "hin"
-	case Hrv:
-		return "hrv"
-	case Hun:
-		return "hun"
-	case Ibo:
-		return "ibo"
-	case Ilo:
-		return "ilo"
-	case Ind:
-		return "ind"
-	case Ita:
-		return "ita"
-	case Jav:
-		return "jav"
-	case Jpn:
-		return "jpn"
-	case Kan:
-		return "kan"
-	case Kat:
-		return "kat"
-	case Khm:
-		return "khm"
-	case Kin:
-		return "kin"
-	case Kor:
-		return "kor"
-	case Kur:
-		return "kur"
-	case Lav:
-		return "lav"
-	case Lit:
-		return "lit"
-	case Mai:
-		return "mai"
-	case Mal:
-		return "mal"
-	case Mar:
-		return "mar"
-	case Mkd:
-		return "mkd"
-	case Mlg:
-		return "mlg"
-	case Mya:
-		return "mya"
-	case Nep:
-		return "nep"
-	case Nld:
-		return "nld"
-	case Nno:
-		return "nno"
-	case Nob:
-		return "nob"
-	case Nya:
-		return "nya"
-	case Ori:
-		return "ori"
-	case Orm:
-		return "orm"
-	case Pan:
-		return "pan"
-	case Pes:
-		return "pes"
-	case Pol:
-		return "pol"
-	case Por:
-		return "por"
-	case Ron:
-		return "ron"
-	case Run:
-		return "run"
-	case Rus:
-		return "rus"
-	case Sin:
-		return "sin"
-	case Skr:
-		return "skr"
-	case Slk:
-		return "slk"
-	case Slv:
-		return "slv"
-	case Sna:
-		return "sna"
-	case Som:
-		return "som"
-	case Spa:
-		return "spa"
-	case Srp:
-		return "srp"
-	case Swe:
-		return "swe"
-	case Tam:
-		return "tam"
-	case Tel:
-		return "tel"
-	case Tgl:
-		return "tgl"
-	case Tha:
-		return "tha"
-	case Tir:
-		return "tir"
-	case Tuk:
-		return "tuk"
-	case Tur:
-		return "tur"
-	case Uig:
-		return "uig"
-	case Ukr:
-		return "ukr"
-	case Urd:
-		return "urd"
-	case Uzb:
-		return "uzb"
-	case Vie:
-		return "vie"
-	case Ydd:
-		return "ydd"
-	case Yor:
-		return "yor"
-	case Zul:
-		return "zul"
-	default:
-		return ""
+	langMap := map[Lang]string{
+		Afr: "afr",
+		Aka: "aka",
+		Amh: "amh",
+		Arb: "arb",
+		Azj: "azj",
+		Bel: "bel",
+		Ben: "ben",
+		Bho: "bho",
+		Bul: "bul",
+		Ceb: "ceb",
+		Ces: "ces",
+		Cmn: "cmn",
+		Dan: "dan",
+		Deu: "deu",
+		Ell: "ell",
+		Eng: "eng",
+		Epo: "epo",
+		Est: "est",
+		Fin: "fin",
+		Fra: "fra",
+		Guj: "guj",
+		Hat: "hat",
+		Hau: "hau",
+		Heb: "heb",
+		Hin: "hin",
+		Hrv: "hrv",
+		Hun: "hun",
+		Ibo: "ibo",
+		Ilo: "ilo",
+		Ind: "ind",
+		Ita: "ita",
+		Jav: "jav",
+		Jpn: "jpn",
+		Kan: "kan",
+		Kat: "kat",
+		Khm: "khm",
+		Kin: "kin",
+		Kor: "kor",
+		Kur: "kur",
+		Lav: "lav",
+		Lit: "lit",
+		Mai: "mai",
+		Mal: "mal",
+		Mar: "mar",
+		Mkd: "mkd",
+		Mlg: "mlg",
+		Mya: "mya",
+		Nep: "nep",
+		Nld: "nld",
+		Nno: "nno",
+		Nob: "nob",
+		Nya: "nya",
+		Ori: "ori",
+		Orm: "orm",
+		Pan: "pan",
+		Pes: "pes",
+		Pol: "pol",
+		Por: "por",
+		Ron: "ron",
+		Run: "run",
+		Rus: "rus",
+		Sin: "sin",
+		Skr: "skr",
+		Slk: "slk",
+		Slv: "slv",
+		Sna: "sna",
+		Som: "som",
+		Spa: "spa",
+		Srp: "srp",
+		Swe: "swe",
+		Tam: "tam",
+		Tel: "tel",
+		Tgl: "tgl",
+		Tha: "tha",
+		Tir: "tir",
+		Tuk: "tuk",
+		Tur: "tur",
+		Uig: "uig",
+		Ukr: "ukr",
+		Urd: "urd",
+		Uzb: "uzb",
+		Vie: "vie",
+		Ydd: "ydd",
+		Yor: "yor",
+		Zul: "zul",
 	}
+
+	if val, ok := langMap[lang]; ok {
+		return val
+	}
+
+	return ""
 }
 
-//Langs represents a map of Lang to language name.
+// String returns the human-readable name of the language as a string.
+func (lang Lang) String() string {
+	if val, ok := Langs[lang]; ok {
+		return val
+	}
+
+	return ""
+}
+
+// Langs represents a map of Lang to language name.
 var Langs = map[Lang]string{
+	Afr: "Afrikaans",
 	Aka: "Akan",
 	Amh: "Amharic",
 	Arb: "Arabic",
@@ -698,7 +487,7 @@ var Langs = map[Lang]string{
 	Tuk: "Turkmen",
 	Tur: "Turkish",
 	Uig: "Uyghur",
-	Ukr: "Ukranian",
+	Ukr: "Ukrainian",
 	Urd: "Urdu",
 	Uzb: "Uzbek",
 	Vie: "Vietnamese",
@@ -728,7 +517,6 @@ var latinLangs = langProfileList{
 	Hau: []string{"da ", " da", "in ", "a k", "ya ", "an ", "a d", "a a", " ya", " ko", " wa", " a ", "sa ", "na ", " ha", "a s", "ta ", "kin", "wan", "wa ", " ta", " ba", "a y", "a h", "n d", "n a", "iya", "ko ", "a t", "ma ", "ar ", " na", "yan", "ba ", " sa", "asa", " za", " ma", "a w", "hak", "ata", " ka", "ama", "akk", "i d", "a m", " mu", "su ", "owa", "a z", "iki", "a b", "nci", " ƙa", " ci", " sh", "ai ", "kow", "anc", "nsa", "a ƙ", "a c", " su", "shi", "ka ", " ku", " ga", "ci ", "ne ", "ani", "e d", "uma", "‘ya", "cik", "kum", "uwa", "ana", " du", " ‘y", "ɗan", "ali", "i k", " yi", "ada", "ƙas", "aka", "kki", "utu", "n y", "a n", "hi ", " ra", "mut", " do", " ad", "tar", " ɗa", "nda", " ab", "man", "a g", "nan", "ars", "and", "cin", "ane", "i a", "yi ", "n k", "min", "sam", "ke ", "a i", "ins", "yin", "ki ", "nin", "aɗa", "ann", "ni ", "tum", "za ", "e m", "ami", "dam", "kan", "yar", "en ", "um ", "n h", "oka", "duk", "mi ", " ja", "ewa", "abi", "kam", "i y", "dai", "mat", "nna", "waɗ", "n s", "ash", "ga ", "kok", "oki", "re ", "am ", "ida", "sar", "awa", "mas", "abu", "uni", "n j", "una", "ra ", "i b", " ƙu", "dun", "a ‘", "cew", "a r", "aba", "ƙun", "ce ", "e s", "a ɗ", "san", "she", "ara", "li ", "kko", "ari", "n w", "m n", "buw", "aik", "u d", "kar", " ai", "niy", " ne", "hal", "rin", "bub", "zam", "omi", " la", "rsa", "ubu", "han", "are", "aya", "a l", "i m", "zai", "ban", "o n", "add", "n m", "i s", " fa", "bin", "r d", "ake", "n ‘", "uns", "sas", "tsa", "dom", " ce", "ans", " hu", "me ", "kiy", "ƙar", " am", "ɗin", " an", "ika", "jam", "i w", "wat", "n t", "yya", "ame", "n ƙ", "abb", "bay", "har", "din", "hen", "dok", "yak", "n b", "nce", "ray", "gan", "fa ", "on ", " ki", "aid", " ts", "rsu", " al", "aye", " id", "n r", "u k", "ili", "nsu", "bba", "aur", "kka", "ayu", "ant", "aci", "dan", "ukk", "ayi", "tun", "aga", "fan", "unc", " lo", "o d", "lok", "sha", "un ", "lin", "kac", "aɗi", "fi ", "gam", "i i", "yuw", "sun", "aif", "aja", " ir", "yay", "imi", "war", " iy", "riy", "ace", "nta", "uka", "o a", "bat", "mar", "bi ", "sak", "n i", " ak", "tab", "afi", "sab"},
 	Hrv: []string{" pr", " i ", "je ", "rav", "pra", "ma ", " na", "ima", " sv", "na ", "ti ", "a p", "nje", " po", "a s", "anj", "a i", "vo ", "ko ", "da ", "vat", "va ", "no ", " za", "i s", "o i", "ja ", "avo", " u ", " im", "sva", "i p", " bi", "e s", "ju ", "tko", "o n", "li ", "ili", "van", "ava", " sl", "ih ", "ne ", "ost", " dr", "ije", " ne", "jed", "slo", " ra", "u s", "lob", "obo", " os", "bod", " da", " ko", "ova", "nja", "koj", "i d", "atk", "iti", " il", "stv", "pri", "om ", "im ", " je", " ob", " su", " ka", "i i", "i n", "e i", "vje", "i u", "se ", "dru", "bit", "voj", "ati", "i o", "ćen", "a o", "o p", "a b", "a n", "ući", " se", "enj", "sti", "a u", "edn", "dje", "lo ", "ćav", " mo", "raz", "u p", " od", "ran", "ni ", "rod", "a k", "su ", "aro", "drć", "svo", "ako", "u i", "rća", "a j", "mij", "ji ", "nih", "eni", "e n", "e o", " nj", "pre", "pos", "ćiv", "oje", "eno", "e p", "nar", "oda", "nim", "ovo", "aju", "ra ", "ći ", "og ", "nov", "iva", "a d", "nos", "bra", "bil", "i b", "avn", "a z", "jen", "e d", "ve ", "ora", "tva", "jel", "sta", "mor", "u o", "cij", "pro", "ovi", "za ", "jer", "ka ", "sno", "ilo", "jem", "red", "em ", "lju", "osn", "oji", " iz", "aci", " do", "lje", "i m", " ni", "odn", "nom", "jeg", " dj", "vno", "vim", "elj", "u z", "o d", "rad", "o o", "m i", "du ", "uje", " sa", "nit", "e b", " st", "oj ", "tit", "a ć", "dno", "e u", "o s", "u d", "eću", "ani", "dna", "nak", "nst", "stu", " sm", "e k", "u u", "an ", "gov", "nju", "juć", "aln", "m s", "tu ", "a r", "ćov", "jan", "u n", "o k", "ist", "ću ", "te ", "tvo", "ans", "šti", "nu ", "ara", "nap", "m p", "nić", "olj", "bud", " bu", "edi", "ovj", "i v", "pod", "sam", "obr", "tel", " mi", "ina", "zaš", "e m", "ašt", " vj", "ona", "nji", "jek", " ta", "duć", "ija", " ćo", "tup", "h p", "oja", "smi", "ada", " op", "oso", "una", "sob", "odu", "dni", "rug", "udu", "ao ", "di ", "avi", "tno", "jim", "itu", "itk", "će ", "odr", "ave", "meć", "nog", "din", "svi", " ći", "kak", "kla", "rim", "akv", "elo", "štv", "ite", "vol", "jet", "opć", "pot", "tan", "ak ", "nic", "nac", "uće", " sk", " me", "ven"},
 	Nld: []string{"en ", "de ", "an ", " de", "van", " va", " en", " he", "ing", "cht", "der", "ng ", "n d", "n v", "et ", "een", " ge", "ech", "n e", "ver", "rec", "nde", " ee", " re", " be", "ede", "er ", "e v", "gen", "den", "het", "ten", " te", " in", " op", "n i", " ve", "lij", " zi", "ere", "eli", "zij", "ijk", "te ", "oor", "ht ", "ens", "n o", "and", "t o", "ijn", "ied", "ke ", " on", "eid", "op ", " vo", "jn ", "id ", "ond", "in ", "sch", " vr", "aar", "n z", "aan", " ie", "rde", "rij", "men", "ren", "ord", "hei", "hte", " we", "eft", "n g", "ft ", "n w", "or ", "n h", "eef", "vri", "wor", " me", "hee", "al ", "t r", "of ", "le ", " of", "ati", "g v", "e b", "eni", " aa", "lle", " wo", "n a", "e o", "nd ", "r h", "voo", " al", "ege", "n t", "erk", " da", " na", "t h", "sta", "jke", "at ", "nat", "nge", "e e", "end", " st", "om ", "e g", "tie", "n b", "ste", "die", "e r", "erw", "wel", "e s", "r d", " om", "ij ", "dig", "t e", "ige", "ter", "ie ", "gel", "re ", "jhe", "t d", " za", "e m", "ers", "ijh", "nig", "zal", "nie", "d v", "ns ", "d e", "e w", "e n", "est", "ele", "bes", " do", "g e", "che", "vol", "ge ", "eze", "e d", "ig ", "gin", "dat", "hap", "cha", "eke", " di", "ona", "e a", "lke", "nst", "ard", " gr", "tel", "min", " to", "waa", "len", "elk", "lin", "eme", "jk ", "n s", "del", "str", "han", "eve", "gro", "ich", "ven", "doo", " wa", "t v", "it ", "ove", "rin", "aat", "n n", "wet", "uit", "ijd", "ze ", " zo", "ion", " ov", "dez", "gem", "met", "tio", "bbe", "ach", " ni", "hed", "st ", "all", "ies", "per", "heb", "ebb", "e i", "toe", "es ", "taa", "n m", "nte", "ien", "el ", "nin", "ale", "ben", "daa", "sti", " ma", "mee", "kin", "pen", "e h", "wer", "ont", "iet", "tig", "g o", "s e", " er", "igd", "ete", "ang", "lan", "nsc", "ema", "man", "t g", "is ", "beg", "her", "esc", "bij", "d o", "ron", "tin", "nal", "eer", "p v", "edi", "erm", "ite", "t w", "t a", " hu", "rwi", "wij", "ijs", "r e", "weg", "js ", "rmi", "naa", "t b", "app", "rwe", " bi", "t z", "ker", "ame", "eri", "ken", " an", "ar ", " la", "tre", "ger", "rdi", "tan", "eit", "gde", "g i", "d z", "oep"},
-	Srp: []string{" pr", " i ", "rav", "pra", " na", "na ", "ma ", " po", "je ", " sv", "da ", "a p", "ima", "ja ", "a i", "vo ", "nje", "va ", "ko ", "anj", "ti ", "i p", " u ", "ako", "a s", " da", "avo", "i s", "ju ", "ost", " za", "sva", "o i", "vak", " im", "e s", "o n", "ava", " sl", "nja", " ko", "no ", "ne ", "li ", "om ", " ne", "ili", " dr", "u s", "slo", "koj", "a n", "obo", "ih ", "lob", "bod", "im ", "sti", "stv", "a o", " bi", " il", " ra", "pri", "a u", "og ", " je", "jed", "e p", "enj", "ni ", "van", "u p", "nos", "a d", "iti", "a k", "edn", "i u", "pro", "o d", "ova", " su", "ran", "cij", "i i", "sta", "se ", " os", "e i", "dru", " ob", "i o", "rod", "aju", "ove", " de", "i n", " ka", "aci", "e o", " ni", " od", "ovo", "i d", "ve ", " se", "eni", "voj", "ija", "su ", "u i", "žav", "avn", "uje", " st", "red", "m i", "dna", "a b", "odi", "ara", "drž", "ji ", "nov", "lju", "e b", "rža", "tva", "što", "u o", "oja", " ov", "a j", "odn", "u u", "jan", "poš", "jen", " nj", "nim", "ka ", "ošt", "du ", "raz", "a z", " iz", "sno", "o p", "vu ", "u n", "u d", "šti", "osn", "e d", "pre", "u z", "de ", "ave", "nih", "bit", "aro", "oji", "bez", "tu ", "gov", "lje", "ičn", " sa", "lja", "svo", "lo ", "za ", "vno", "e n", "eđu", " tr", "nar", " me", "vim", "čno", "oda", "ani", "đen", "nac", "nak", "an ", "to ", "tre", "ašt", " kr", "stu", "nog", "o k", "m s", "tit", "aln", "nom", "oj ", "pos", "e u", "reb", " vr", "olj", "dno", "iko", "ku ", "me ", "nik", " do", "ika", "e k", "jeg", "nst", "tav", "em ", "i m", "sme", "o s", "dni", "bra", "nju", "šen", "ovi", "tan", "te ", "avi", "vol", " li", "zaš", "ilo", "rug", "var", "kao", "ao ", "riv", "tup", "st ", "živ", "ans", "eno", "čov", "štv", "kla", "vre", "bud", "ena", " ve", "ver", "odu", "međ", "oju", "ušt", " bu", "kom", "kri", "pod", "ruš", "m n", "i b", "ba ", "a t", "ugi", "edi", " mo", "la ", "u v", "kak", " sm", "ego", "akv", "o j", "rad", "dst", "jav", "del", "tvo", " op", "nu ", "por", "vlj", "avl", "m p", "od ", "jem", "oje", " čo", "a r", "sam", "i v", "ere", "pot", "o o", "šte", "rem", "vek", "svi", " on", "rot", "e r"},
 	Kur: []string{" he", " û ", "ên ", " bi", " ma", "in ", "na ", " di", "maf", "an ", "ku ", " de", " ku", " ji", "xwe", "her", " xw", "iya", "ya ", "kes", "kir", "rin", "iri", " ne", "ji ", "bi ", "yên", "afê", "e b", "de ", "tin", "e h", "iyê", "ke ", "es ", "ye ", " we", "er ", "di ", "we ", "ê d", "i b", " be", "erk", "ina", " na", " an", "î û", "yê ", "eye", "î y", "kî ", "rke", "nê ", "diy", "ete", "eke", "ber", "hem", "hey", " li", " ci", "wek", "li ", "n d", "fê ", " bê", " te", "ne ", "yî ", " se", "net", "rî ", "tew", "yek", "sti", "af ", " ki", "re ", "yan", "n b", "kar", "hev", "e k", "aza", "n û", "wî ", " ew", "i h", "n k", "û b", "î b", " mi", " az", "dan", " wî", "ekî", "î a", "a m", "zad", "e d", "mir", "bin", "est", "ara", "iro", "nav", "ser", "a w", "adi", "rov", "n h", "anê", "tê ", "ewe", "be ", "ewl", "ev ", "mû ", " ya", "tî ", "ta ", "emû", " yê", "ast", "wle", " tê", "n m", " bo", "wey", "s m", "bo ", " tu", "n j", "ras", " da", " me", "din", "î d", "ê h", "n n", "n w", "ing", "st ", " ke", " ge", "în ", "ar ", " pê", "iye", "îna", "bat", "r k", "ema", "cih", "ê b", "wed", "û m", "dî ", "û a", "vak", "ê t", "ekh", "par", " ye", "vî ", "civ", "n e", "ana", "î h", "ê k", "khe", "geh", "nge", "ûna", "fên", "ane", "av ", "î m", "bik", "eyê", "eyî", "e û", " re", "man", "erb", "a x", "vê ", "ê m", "iva", "e n", "hî ", "bûn", "kê ", " pa", "erî", "jî ", "end", " ta", "ela", "nên", "n x", "a k", "ika", "f û", "f h", "î n", "ari", "mî ", "a s", "e j", "eza", "tên", "nek", " ni", "ra ", "ehî", "tiy", "n a", "bes", "rbe", "û h", "rwe", "zan", " a ", "erw", "ov ", "inê", "ama", "ek ", "nîn", "bê ", "ovî", "ike", "a n", " ra", "riy", "i d", "anî", "û d", "e e", "etê", "ê x", "yet", "aye", "ê j", "tem", "e t", "erd", "i n", "eta", "ibe", "a g", "u d", "xeb", "atê", "i m", "tu ", " wi", "dew", "mal", "let", "nda", "ewa", " ên", "awa", "e m", "a d", "mam", "han", "u h", "a b", "pêş", "ere", " ba", "lat", "ist", " za", "bib", "uke", "tuk", "are", "asî", "rti", "arî", "i a", "hîn", " hî", "edi", "nûn", "anû", "qan", " qa", " hi", " şe", "ine", "n l", "mên", "ûn ", "e a"},
 	Yor: []string{"ti ", " ní", "ó̩ ", " è̩", "ní ", " lá", "̩n ", "o̩n", "é̩ ", "wo̩", "àn ", " e̩", "kan", "an ", "tí ", " tí", "tó̩", " kò", "ò̩ ", "̩tó", " àw", " àt", "è̩ ", "è̩t", "e̩n", "bí ", "àti", "lát", "áti", " gb", "lè̩", "s̩e", " ló", " ó ", "àwo", "gbo", "̩nì", "n l", " a ", " tó", "í è", "ra ", " s̩", "n t", "ò̩k", "sí ", "tó ", "̩ka", "kò̩", "ìyà", "o̩ ", " sí", "ílè", "orí", "ni ", "yàn", "dè ", "̩‐è", "ì k", "̩ à", "èdè", " or", "ún ", "ríl", "è̩‐", "í à", "jé̩", "‐èd", "àbí", "̩ò̩", "ò̩ò", "tàb", "nì ", "í ó", "n à", " tà", "̩ l", "jo̩", " ti", "̩e ", "̩ t", " wo", "nìy", "í ì", "ó n", " jé", " sì", "ló ", "kò ", "n è", "wó̩", " bá", "n n", "sì ", " fú", "̩ s", "í a", "rè̩", "fún", " pé", " òm", "̩ni", "gbà", " kí", " èn", "ènì", "in ", "òmì", "ìí ", "ba ", "nir", "pé ", "ira", "mìn", "ìni", "n o", "ràn", "ìgb", " ìg", "bá ", "e̩ ", " rè", "̩ n", "kí ", "n e", "un ", "gba", "̩ p", "í ò", "nú ", " o̩", "nín", "gbé", "yé ", " ka", "ínú", "a k", "fi ", " fi", "mo̩", "bé̩", "o̩d", "dò̩", "̩dò", "ó s", "i l", "̩ o", "̩ ì", "wà ", "í i", "i ì", "hun", "bò ", "i ò", "dá ", "bo̩", "o̩m", "̩mo", "̩wó", "bo ", "áà ", "̩ k", "ó j", "ló̩", "àgb", "ohu", " oh", " bí", " ò̩", "bà ", "ara", "yìí", "ogb", "írà", "n s", "ú ì", " ìb", "pò̩", "í k", " lè", "bog", "i t", "à t", "óò ", "yóò", "kó̩", "gé̩", "à l", "ó̩n", "rú ", "lè ", " yó", "̩ ò", "̩ e", "a w", "̩ y", "ò̩r", "̩ f", " wà", "ò l", "í t", "ó b", "i n", "ó̩w", "̩gb", "yí ", "í w", "ìké", "̩ a", "láà", "wùj", "àbò", "i è", "ùjo", "fin", "é̩n", "n k", "í e", "i j", "ú à", " ìk", "òfi", " òf", " ar", "i s", "mìí", "ìír", " mì", " ir", "rin", "náà", " ná", "jú ", "̩ b", " yì", "ó t", "̩é̩", " i ", "̩ m", "fé̩", "kàn", "rí ", "ú è", "à n", "wù ", "s̩é", "é à", " mú", " èt", "áyé", "í g", "̩kó", "̩dá", "è̩d", "àwù", "è̩k", " ìd", "irú", "í o", "i o", "i à", "láì", "í n", "ípa", " kú", "níp", " ìm", "a l", "ké̩", "bé ", "i g", "de ", "ábé", "ìn ", "báy", "̩è̩", "ígb", "wò̩", "níg", "mú ", "láb", " àà", "n f", "è̩s", "̩ w", "ùn ", "i a", "ayé", "èyí", " èy", "mó̩", "á è", " ni", "n b", " wó", "je̩", " ìj", "gbá", "ò̩n", "ó̩g"},
 	Uzb: []string{"lar", "ish", "an ", "ga ", "ar ", " va", " bi", "da ", "va ", "ir ", " hu", "iga", "sh ", "uqu", "shi", "bir", "quq", "huq", "gan", " bo", " ha", "ini", "ng ", "a e", "r b", " ta", "lis", "ni ", "ing", "lik", "ida", "oʻl", "ili", "ari", "nin", "on ", "ins", " in", "adi", "nso", "son", "iy ", " oʻ", "lan", " ma", "dir", "hi ", "kin", "har", "i b", "ash", " yo", "boʻ", " mu", "dan", "uqi", "ila", "ega", "qla", "r i", "qig", "oʻz", " eg", "kla", "a b", "qil", "erk", "ki ", " er", "oli", "nli", "at ", " ol", "gad", "lga", "rki", "oki", "i h", "a o", " qa", "yok", "lig", "osh", "igi", "ib ", "las", "n b", "atl", "n m", " ba", "ara", " qi", "ri ", " sh", "iya", "ala", "lat", "in ", "ham", "bil", "a t", "a y", "bos", "r h", "siy", "n o", "yat", "inl", "ik ", "a q", "cha", "a h", " et", "eti", "nis", "a s", "til", "ani", "h h", "i v", "mas", "tla", "osi", "asi", " qo", "ʻli", "ati", "i m", "rni", "im ", "uql", "arn", "ris", "qar", "a i", "gi ", " da", "n h", "ha ", "sha", "i t", "mla", "rch", " xa", "i o", "li ", "hun", "bar", "lin", "ʻz ", "arc", "rla", " bu", "a m", "a a", " as", "mum", " be", " tu", "aro", "r v", "ikl", "lib", "taʼ", "h v", "tga", "tib", "un ", "lla", "mda", " ke", "shg", " to", "n q", "sid", "n e", "mat", "amd", "shu", "hga", " te", "tas", "ali", "umk", "oya", "hla", "ola", "aml", "iro", "ill", "tis", "iri", "rga", "mki", "irl", " ya", "xal", "dam", " de", "gin", "eng", "rda", "tar", "ush", "rak", "ayo", " eʼ", " so", "ten", "alq", " sa", "ur ", " is", "imo", "r t", " ki", "mil", " mi", "era", "zar", "hqa", "aza", "k b", " si", "nda", "hda", "kat", "ak ", "oʻr", "n v", "a k", "or ", "rat", "ada", "ʻlg", "miy", "tni", "i q", "shq", "oda", "shl", "bu ", "dav", "nid", "y t", "ch ", "asl", "sos", "ilg", "aso", "n t", "atn", "sin", "am ", "ti ", "as ", "ana", "rin", "siz", "yot", "lim", "uni", "nga", "lak", "n i", "a u", "qon", "i a", "h k", "vla", "avl", "ami", "dek", " ja", "ema", "a d", "na ", " em", "ekl", "gʻi", "si ", "i e", "ino", " ka", "uch", "bor", "ker", " ch", "lma", "liy", "a v", "ʼti", "lli", "aka", "muh", "rig", "ech", "i y", "uri", "ror"},
@@ -749,6 +537,7 @@ var latinLangs = langProfileList{
 	Hat: []string{"ou ", "an ", " li", "on ", "wa ", "yon", " po", "li ", "pou", "te ", " yo", "oun", " mo", "un ", "mou", "ak ", " na", "en ", "n p", "nan", "tou", "syo", " dw", " to", "yo ", " fè", "dwa", " ak", " ki", "ki ", " pa", " sa", "out", " la", " ko", " ge", "ut ", "n s", "gen", " de", "se ", "asy", "èt ", "i p", "n d", " a ", " so", "n l", "a a", "fè ", "n k", " se", "pa ", "e d", "u l", " re", "ite", "sa ", " ch", "kon", "n n", "e l", "t p", "ni ", "cha", "a p", "nn ", "ans", "pi ", "t m", " ka", " an", "nm ", "fèt", "i s", "son", "man", " me", "n m", "n a", "e p", "swa", "sou", "e k", "hak", "òt ", "n y", "men", "i l", "epi", " pe", "ote", "san", " ep", "i k", " si", "yen", "eyi", "a l", " ap", "i a", "yi ", "pey", "je ", "n t", "e a", "k m", "e s", " ni", "lib", "e n", "i t", "lit", "ran", "lè ", "enn", "al ", "a s", " pr", "a f", "ns ", " lò", "ap ", "lòt", "enm", "k l", "n e", "t l", "kla", "anm", "e y", "a k", " ma", "e t", "ay ", "i m", "ali", " lè", "è a", "ye ", "a y", "ant", " os", " ba", "i g", " tè", "aso", "u t", "a n", " pw", "ras", " pè", "n f", "nas", "ka ", "n g", "osw", " ta", "dek", "i d", "pwo", "e m", " di", " vi", "la ", "i n", "u s", "sos", "bli", " te", "o t", " tr", "lwa", "ète", "a t", "le ", "u y", "i f", "tan", "a c", "lar", "a m", "ete", "ara", "t k", " pi", "ibè", "bèt", "re ", "osy", "de ", "ati", "ke ", "res", "tis", "i y", "tè ", "nen", " fa", "ekl", "ze ", "nal", "ons", "ksy", "ini", "che", " le", "e r", "a d", " en", "aye", "he ", "o p", "alw", " kò", "lal", " no", "esp", "a g", "ava", "kou", "las", "way", "u f", "isy", " za", " ok", "oke", "kal", "ken", "sye", "ta ", "onn", "k k", "nje", "pra", "van", "esi", "pès", "kot", "ret", "sya", "n v", "lek", "jan", "ik ", "a b", "eks", "wot", "è n", "di ", "òl ", "tra", "u k", "i r", "nou", " as", "k a", "u d", "ist", "èso", "ib ", " ne", "iti", "ti ", "is ", "y a", "des", "è l", "a r", "ont", " ke", "nsa", "pat", "rit", "sit", "pòt", "ona", "ab ", "è s", " sw", "ond", "ide", " ja", "rav", "t a", "ri ", "bon", "viv", " sè", "pre", "vay", "k p", "l l", "kòm", "i o", " ra", "era", "fan", "dev"},
 	Aka: []string{"sɛ ", "a a", " sɛ", "ne ", "ra ", "a n", " wɔ", " a ", "ara", "an ", "eɛ ", "no ", " ne", " bi", " no", " as", "iar", "bia", "yɛ ", "mu ", "aa ", " an", "ɛ s", "e a", "ma ", " ho", "bi ", "man", "deɛ", " mu", "ho ", "ɛ a", "na ", "a ɛ", " ob", "obi", "e n", "a b", "n a", "so ", "o n", "pa ", "ama", "ɛ o", "o a", "ipa", "nip", "ɛ n", "naa", " na", "a w", "ana", " so", " ad", " nn", "ɛ ɔ", "ɛde", "asɛ", "kwa", " on", "oni", "wan", " am", "a ɔ", "sɛd", "wɔ ", " ah", "ɛyɛ", " ny", "oɔ ", " n ", "mma", "i a", " mm", "nni", " kw", "ie ", "wɔn", "ɛ w", "de ", " ɛy", " ba", "ase", "ɔ n", "o b", "i m", "ɔ a", "uo ", "n n", "a m", "o s", "iri", " yi", "ni ", "e s", "nyi", "di ", "u n", "a o", "aho", " de", "tum", " ɛn", "ɔn ", "nya", "i n", "ɔma", "e m", "adw", " yɛ", "umi", "die", "mi ", "ɛ ɛ", "o k", " ab", "ɛm ", "a s", " ma", "nam", " ɔm", " ɛs", "yin", " at", " bɔ", "o d", "ina", "pɛ ", "sɛm", "ua ", "n s", "bɔ ", "adi", "ya ", "e h", "aso", "mar", "ani", "kuo", "rɛ ", "fa ", "a k", "ɔde", "a h", "ba ", "n b", "re ", "uma", "wum", "om ", "ɔ h", "m n", "yi ", "u a", " sa", "se ", "dwu", "ɔ b", " nt", "m a", "erɛ", " kɔ", "a y", "orɔ", " nk", " bɛ", " ɔd", "ten", "rɔ ", "hyɛ", "saa", "ka ", "ɛ b", "e b", "i s", "ade", "am ", "nka", "kor", "i ɛ", "ene", "ena", " ns", "ban", "ɛns", " ku", "ɛsɛ", "ane", "nsɛ", "fof", "ɛɛ ", " fi", "gye", "ɔtu", " di", "ano", "i k", "o m", " ɔt", " ko", "yɛɛ", "bir", " ak", "im ", "kye", " pɛ", "a d", "yie", "ko ", "nti", "i b", "ete", "ofo", "amm", "ye ", "ri ", "foɔ", "kɔ ", "bom", "abo", "ɔ s", "ɔne", " ɛb", "soɔ", "for", "isɛ", "m k", "asa", "nod", "ɛ m", "fir", "ti ", " da", "e y", "sua", " be", "nii", "seɛ", "wa ", "ber", " aw", "dwe", "n f", " fo", "o ɛ", "i h", "u b", "ɔ m", " mf", "hɔ ", "kab", "wɛ ", "to ", "rib", "hwɛ", "ibi", " dw", "dis", "nso", "ans", "tir", "u ɛ", " ti", " hɔ", "sa ", "e o", " tu", "odi", "ɛ y", "ia ", "ofa", " ɔn", "o w", "ɛbɛ", "aba", " ka", "ii ", "wen", "ɛsi", "m m", "sia", "ada", "yer", "ian", "da ", "set", " gy", "dua", "i d", "som", "mfa", "ɔ w", " af", "i y", "any", "ora", "rim", "wɔd", "dwa", "nsi"},
 	Sna: []string{"wa ", "a k", "ana", "ro ", "na ", " ku", " mu", "nhu", "dze", "hu ", "a m", " zv", "mun", "oku", "chi", "a n", "aka", "dzi", "ka ", "zer", "ero", " ch", "che", "se ", "unh", "odz", "rwa", "ra ", "kod", "zvi", " ne", " pa", "kan", " we", " dz", " no", "ika", "va ", "iri", " an", "kut", "nyi", "o y", "yik", "van", "nek", "ese", "eko", "zva", "idz", "e a", " ka", "ane", "ano", "ngu", "eku", "cha", "ung", " yo", "ri ", "ake", "ke ", "ach", "udz", "iro", "a z", "u w", " va", "ira", "wes", "ang", "ech", "nge", "i p", "eng", "yok", "nok", "edz", "o i", "irw", "ani", "ino", "uva", "ich", "nga", "ti ", "zir", "anh", "rir", "ko ", "dza", "o n", "wan", "wo ", "tan", "sun", "ipi", "dzw", "eny", "asi", "hen", "zve", "kur", "vak", "a p", "sha", "unu", "zwa", "ita", "kwa", "e k", "rud", "nun", "uru", "guk", "a c", "a d", " ya", "a y", "bat", "pas", "ezv", "ta ", "e n", "uti", " kw", "o k", "o c", "o m", "ara", " ma", "si ", "ga ", "uko", "ata", "ose", "ema", "dzo", "uch", "hip", "kuv", "no ", "rus", "hec", "omu", "i z", "wak", "o r", "kus", "kwe", "ere", "re ", " rw", " po", "o a", "mwe", "yak", "mo ", "usu", "isi", "za ", "sa ", "e z", "uta", "gar", " in", "hin", "nem", "pac", "kuc", "we ", "ete", " ye", "twa", "pos", "o d", "a i", "hur", "get", "ari", "ong", "pan", "erw", "uka", "rwo", "vo ", " ak", "tem", "zo ", "emu", "emo", "oru", " ha", "uit", "wen", "uye", "kui", " uy", "vin", "hak", "kub", "i m", "a a", "kud", " se", " ko", "yo ", "and", "da ", "nor", "sin", "uba", "a s", "a u", " ic", "zvo", "mut", "mat", "nez", "e m", "a w", "adz", "ura", "eva", "ava", "pi ", "a r", "era", "ute", "oko", "vis", " iy", "ha ", "u a", "han", "cho", "aru", "asa", "fan", "aan", "pir", "ina", "guv", "ush", "ton", " hu", "uny", "enz", "ran", "yor", "ted", "ait", "hek", " ny", "uri", "hok", "nen", "osh", " ac", "ngi", "muk", "ngo", "o z", "azv", "kun", "nid", "uma", "i h", "vem", "a h", "mir", "usa", "o p", "i n", "a v", "i k", "amb", "zan", "nza", "kuz", "zi ", "kak", "ing", "u v", "ngw", "mum", "mba", "nir", "sar", "ewo", "e p", "uwa", "vic", "i i", "gwa", "aga", "ama", "go ", "yew", "pam"},
+	Afr: []string{"ie ", "die", "en ", " di", " en", "an ", "ing", "ng ", "van", " va", "te ", "e v", "reg", " re", "n d", " ge", "ens", "et ", "e r", "e e", " te", " be", "le ", "ver", "een", " in", "ke ", " ve", " he", "eg ", "het", "lke", "lik", "n h", "de ", "nie", "aan", "t d", "id ", "men", " vr", "nde", "eid", "e o", " aa", "in ", "of ", "der", "hei", "om ", "g v", " op", " ni", "e b", " el", "al ", "and", "elk", "er ", " me", "ord", "e w", "g t", " to", " of", "ers", " we", " sa", " vo", "ot ", "erk", "n v", "vry", "ge ", "kee", "asi", "tot", " wa", "sie", "ere", " om", "aar", "sal", "dig", "wor", "egt", "gte", "rdi", "rd ", "at ", "nd ", "e s", "ede", "ige", " de", " ’n", "n a", "eni", " wo", "e g", " on", "n s", "’n ", "e t", "erd", "ns ", "oor", "bes", "ond", "se ", "ska", "aak", "nig", "lle", "yhe", "ryh", "is ", "eli", "esk", "ien", "sta", "vol", "ele", "e m", " vi", "ik ", "r d", "vir", "edi", "kap", "g e", "ir ", "es ", "sy ", "ang", "din", " st", "ewe", "gem", "gel", "g o", " is", "el ", "e i", "op ", "ker", "ak ", "uit", "ike", "nse", "hie", "ur ", "eur", " al", "e a", "nas", "e n", "nge", "ier", "n o", "wer", "e d", "ap ", " hu", "ale", "rin", " hi", "eme", "deu", "min", "wat", "n e", "s o", " as", " so", "as ", "e h", "del", "d v", "ter", "ten", "gin", "end", "kin", "it ", " da", " sy", "per", "re ", "n w", "ges", "wet", "ger", "e k", "oed", "s v", "nte", "s e", "ona", "nal", "waa", "d t", "ees", "soo", " ma", "d s", "ies", "tel", "ema", "d e", "red", "ite", " na", "ske", "ely", "lyk", "ren", "nsk", "d o", "oon", "t e", "eke", "esi", "ese", "eri", "hul", " gr", "ig ", "sio", "man", "rde", "ion", "n b", "n g", "voo", "hed", "ind", "tee", " pe", "rso", "t v", "s d", "all", "n t", "rse", "n i", "eem", "d w", "ort", "ndi", "daa", "maa", "t g", "erm", "ont", "ent", "ans", "ame", "yke", "ari", "n m", "lan", "voe", "n ’", "nli", "rkl", "r m", "sia", "ods", "ard", "iem", "g s", "wee", "r e", "l g", "taa", "sek", "bar", "gti", "n n", "lin", "sen", "t o", "t a", "raa", "ene", "opv", "pvo", "ete", " ty", "arb", " sl", "igh", "dee", "g a", "str", "nsl", "sel", "ern", "ste"},
 	Fin: []string{"en ", "ise", "ja ", "ist", " ja", "on ", "ta ", "sta", "an ", "n j", "ais", "sen", "n o", "keu", "ike", "oik", "lis", " va", "ell", "lla", "n t", "uks", " on", "ksi", " oi", "n k", " ka", "aan", "een", "la ", "lli", "kai", "a j", " ta", "sa ", "in ", "mis", " jo", "a o", "ään", "än ", "sel", "n s", "kse", "a t", "a k", "tai", "us ", "tta", "ans", "ssa", "kun", "den", "tä ", "eus", "nen", "kan", "nsa", "apa", "all", "est", " se", "eis", "ill", "ien", "see", "taa", " yh", "jok", "n y", "vap", "a v", "ttä", "oka", "n v", "ai ", "itt", "aa ", "aik", "ett", "tuk", "ti ", "ust", " ku", "isi", "stä", "ses", " tä", " tu", "lai", "n p", "sti", "ast", "n e", "n m", "tää", "sia", "unn", "ä j", "ude", "ä o", "ste", "si ", "tei", "ine", "per", "a s", "ia ", "kä ", "äne", " mi", "maa", " pe", "a p", "ess", "a m", "ain", "ämä", "tam", "yht", " ju", "jul", "yks", "hän", "ä t", " hä", "utt", "ide", "et ", "llä", "val", "sek", "stu", "n a", "lä ", "ami", "hmi", " ke", "ikk", "lle", "iin", "sä ", "euk", "täm", "ihm", "tee", " ih", "lta", "pau", " sa", "isk", "mää", "ois", "un ", "tav", "ten", "dis", "hte", "n h", "iss", "ssä", "a h", "ava", " ma", "a y", " ei", " te", " si", " ol", "ekä", "sty", "alt", "toi", "att", "oll", "tet", " jä", " ra", "vat", " mu", "iel", " to", "mai", "sal", "isu", "a a", "kki", "at ", "suu", "n l", "väl", "ää ", "uli", "tun", "tie", "eru", " yk", "etu", "vaa", "rus", "muk", " he", "ei ", "a e", "kie", "sku", "eid", "iit", " su", "nna", "sil", "oma", "min", " yl", "lin", "aut", "uut", "sko", " ko", "tti", "le ", "sie", "kaa", "a r", " ri", "sii", "nno", "eli", "tur", "saa", "aat", "lei", "oli", "na ", " la", "oon", "urv", "lma", "rva", "ite", "mie", "vas", "ä m", " ed", "tus", "iaa", "itä", "ä v", "uol", "yle", " al", "lit", "suo", "ama", "joi", "unt", "ute", "i o", "tyk", "n r", "ali", "lii", "nee", "paa", "avi", "omi", "oit", "jen", "kää", "voi", "yhd", "ä k", " ki", "eet", "eks", " sy", "ity", "ilö", "ilm", "oim", "ole", "sit", "ita", "uom", "vai", "usk", "ala", "hen", "ope", " pu", "auk", "pet", "oja", "i s", "rii", "uud", "hdi", "äli", "va ", " om"},
 	Run: []string{"ra ", "we ", "wa ", " mu", "e a", "se ", " n ", "a k", "ira", "ntu", "tu ", " ku", " um", "ko ", "a i", "mu ", "iri", "mun", "hir", "ye ", "unt", "ing", "ash", "ere", "shi", "a n", "umu", "zwa", " bi", "gu ", "ege", "a a", "za ", "teg", "ama", "e k", "go ", "uba", "aba", "ngo", "ora", "o a", "ish", " ba", " ar", "ung", "a m", " we", "e n", "na ", "sho", "ese", "nga", " ab", "e m", "mwe", "ugu", " kw", "ndi", " gu", "ate", "kwi", "wes", "riz", "ger", "u w", " at", "di ", "gih", "iza", "n u", "ngi", "ban", "yo ", "ka ", "e b", "a b", " am", " ca", "ara", "e i", "obo", "hob", "ri ", "u b", "can", "nke", "ro ", "bor", " in", "bah", "ahi", "ezw", "a u", "gir", "ke ", "igi", "iki", "iwe", "rez", "ihu", "hug", "aku", "ari", "ang", "a g", "ank", "ose", "u n", "o n", "rwa", "kan", " ak", "nta", "and", "ngu", " vy", "aka", "n i", "ran", " nt", " ub", "kun", "ata", "i n", "kur", "ana", "e u", " ko", "gin", "nye", "re ", " ka", "any", "ta ", "uko", "amw", "iye", " zi", "ga ", "ite", " ib", "aha", " ng", "era", "o b", "ako", "o i", " bu", "o k", "o u", "o z", " ig", "o m", "ho ", "mak", "sha", " as", " iv", "ivy", "n a", "i b", "izw", "o y", " uk", "ubu", "aga", "ba ", "kir", "vyi", "aho", " is", "nya", "gan", "uri", " it", " im", "u m", "kub", "rik", "hin", "guk", "ene", "bat", "nge", "jwe", "imi", " y ", "vyo", "imw", "ani", "kug", "u a", "ina", "gek", "ham", "i i", "e c", "ze ", "ush", "e y", "uru", "bur", "amb", "ibi", "agi", "uza", "zi ", "eye", "u g", "gus", "i a", " nk", "no ", "abi", "ha ", "rah", "ber", "eme", "ras", "ura", "kiz", "ne ", "tun", "ron", " zu", "ma ", "gen", "wo ", "zub", "w i", "kor", "zin", "wub", "ind", " gi", "y i", "ugi", "je ", "iro", "mbe", " mw", "bak", " ma", "ryo", "eka", "mat", " ic", "onk", "a z", " bo", "ika", "eko", "ihe", "ukw", "wir", "bwa", " ry", " ha", "bwo", " ag", "umw", "yiw", "tse", " ya", "he ", "eng", " ki", "nka", "bir", "ant", "aro", "gis", "ury", "twa", " yo", "bik", "rek", "ni ", " ah", " bw", "uro", "mw ", "tan", "i y", "nde", "ejw", " no", "zam", "puz", "ku ", "y a", "a c", "bih", "ya ", "mur", "utu", "eny", "uki", "bos"},
 	Tuk: []string{"lar", " we", "we ", " bi", "yň ", "ary", "ada", "da ", " he", " ha", "an ", "yny", "kla", "dam", "de ", " ad", "yna", "er ", "na ", " ýa", "ir ", "dyr", "iň ", "bir", "r b", "ydy", "ler", "ara", "am ", "yr ", "ini", "lan", "r a", "kly", "lyd", " öz", "mag", "nyň", "öz ", "her", "gyn", "aga", "en ", "ryn", "akl", "ala", "dan", "hak", "eri", "ne ", "uku", "ar ", "r h", "ga ", "ny ", "huk", " de", "ili", "ygy", "li ", "kuk", "a h", "nda", "asy", "len", " ed", "bil", "atl", "ine", "edi", "niň", "lyg", " hu", " ga", "e h", "nde", "dil", "ryň", "aza", "zat", "a g", "‐da", "a‐d", "eti", "ukl", " gö", "ly ", " bo", "tly", "gin", " az", "lma", "ama", "hem", "dir", "ykl", "‐de", "e d", "ile", "ýan", "a d", "ýet", "ýa‐", "ynd", "lyk", "aýy", "e a", "ünd", "ge ", " go", "egi", "ilm", "sy ", "ni ", "etm", "em‐", "lme", "m‐d", "aly", "any", " be", "tle", "syn", "rin", "y b", "let", "mak", "a w", "a ý", "den", "äge", "ra ", " äh", "mäg", " du", "n e", "bol", "meg", "ele", "ň h", " et", "igi", "ň w", "im ", "iýa", " ýe", " di", "r e", "ek ", " ba", "ak ", "esi", "ril", "a b", "in ", "p b", "deň", "etl", "agy", " bu", " je", "bu ", "e ö", "y d", " hi", "mez", " es", "ard", " sa", "ähl", "e b", "yly", " ka", "esa", "mek", " gu", "n a", "e t", "lik", " do", "e g", "sas", "ill", "nma", "ň a", "ram", "ola", "hal", "y w", "ýar", " ar", "anm", "mel", "iri", "siý", "ndi", "ede", "gal", "end", "mil", "rla", "göz", " ma", "n b", "e ý", "öňü", "ňün", "n h", " tu", "hiç", "yýe", " ge", "my ", "iç ", " öň", "n ý", "tla", "ň ý", "lin", "rda", "al ", "lig", "gar", " mi", "i g", "dal", "rle", "mal", "kan", "gat", "tme", "sin", "and", "ň g", "gor", " ta", "öwl", "ýle", "y g", "e w", "ora", "tiň", "ekl", " yn", "alk", "döw", " dö", "ere", "m h", " me", "dur", " er", "asi", "tut", "at ", "çin", "irl", "umy", "eli", "erk", "nme", "wle", "gur", "a ö", "aýa", " çä", "nun", " ki", "ras", "aml", "up ", "ýaş", "tyn", " aý", "ry ", "ň d", "baş", "ip ", "gi ", "z h", "kin", "z ö", "n w", "ter", "inm", "eýl", "i ý", "kim", "nam", "eň ", "beý", "dol", " se", " te", "r d", "utu", "gyý", "ez ", "umu", "mum"},

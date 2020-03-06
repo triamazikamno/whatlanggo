@@ -92,3 +92,4 @@ and [documentation](https://godoc.org/github.com/abadojack/whatlanggo).
 | Rundi          | run       | Run |
 | Shona          | sna       | Sna |
 | Uyghur         | uig       | Uig |
+| Africaans      | afr       | Afr |
